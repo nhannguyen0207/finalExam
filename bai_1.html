@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 1</title>
+</head>
+<body>
+<script>
+    let n;
+    do {
+        n= prompt("Nhập độ dài của mảng")
+    }while (n<=0||n>20||n%1 !=0);
+    let array= [];
+    for (let i=0; i<n; i++) {
+        array.push(+prompt("Nhập phần tử thứ " + (i+1)))
+    }
+    alert(array);
+    Sum(array)
+    function Sum(num) {
+        let count=0;
+        for (let i = 0; i < num.length; i++) {
+            if (num[i]%3===0 && num[i]%5===0){
+                count += num[i]
+            }
+        }
+        console.log('Tổng của các số là bội số của 3 và 5 là: '+ count)
+    }
+</script>
+</body>
+</html>

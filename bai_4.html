@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bài 4</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<form action="" id="In4mation" onsubmit="saveInformation() ;return false;">
+<div>
+  <label for="series">Mã số khách hàng</label>
+  <input class="border" type="number" name="series" id="series" required>
+</div>
+<div>
+  <label for="name">Tên khách hàng</label>
+  <input class="border" type="text" name="name" id="name" required>
+</div>
+<div>
+  <label for="phoneNumber">Số điện thoại </label>
+  <<input class="border" type="number" name="phoneNumber" id="phoneNumber" required>
+</div>
+<div>
+  <label for="address">Địa chỉ</label>
+  <input class="border" type="text" name="address" id="address" required>
+</div>
+<div>
+  <label for="Email">Email</label>
+  <input class="border" type="text" name="Email" id="Email" required>
+</div>
+<div>
+  <button class="bg-blue-500 p-2 text-white" type="submit">Lưu</button>
+</div>
+</form>
+<table class="border-collapse border border-slate-400 table-auto">
+  <thead>
+  <tr>
+    <th class="border border-slate-300">Tên khách hàng</th>
+    <th class="border border-slate-300">Số điện thoại </th>
+    <th class="border border-slate-300">Địa chỉ</th>
+    <th class="border border-slate-300">Email</th>
+  </tr>
+  </thead>
+  <tbody id="tableData"></tbody>
+</table>
+<script>
+  class Customer{
+    constructor(series,name,phoneNumber,address,Email) {
+      this.series=series
+      this.name=name
+      this.phoneNumber=phoneNumber
+      this.address=address
+      this.Email=Email
+    }
+  }
+  let list=[]
+  let CustomerIndexList=-1
+  function displayCustomer() {
+    const tabledata = document.getElementById("tableData");
+     let data=''
+    for (let i = 0; i < list.length ; i++) {
+        data +=`<tr>
+        <td class="border border-slate-300">${list[i].series}</td>
+        <td class="border border-slate-300">${list[i].name}</td>
+        <td class="border border-slate-300">${list[i].phoneNumber}</td>
+        <td class="border border-slate-300">${list[i].address}</td>
+        <td class="border border-slate-300">${list[i].Email}</td>
+    </tr>`;
+        }
+        tabledata.innerHTML = data;
+    }
+displayCustomer();
+  function saveInformation() {
+    let serise=document.getElementById("series").value;
+    let name=document.getElementById("name").value;
+    let phoneNumber=document.getElementById("phoneNumber").value;
+    let address=document.getElementById("address").value;
+    let Email=document.getElementById("Email").value;
+    if(CustomerIndexList !==-1){
+      list[CustomerIndexList].series=serise;
+      list[CustomerIndexList].name=name;
+      list[CustomerIndexList].phoneNumber=phoneNumber;
+      list[CustomerIndexList].address=address;
+      list[CustomerIndexList].Email=Email;
+    }else {
+      let newInformation= new Customer(serise,name,phoneNumber,address,Email)
+      list.push(newInformation)
+    }
+    displayCustomer()
+    document.getElementById("In4mation").reset();
+    CustomerIndexList=-1
+  }
+  
+</script>
+</body>
+</html>

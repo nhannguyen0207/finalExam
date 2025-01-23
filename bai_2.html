@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2</title>
+</head>
+<body>
+<script>
+  let n;
+  do {
+    n=prompt("Nhập điểm của học sinh")
+  }while (n<0 || n>100 || n%1!==0)
+  if (n<50){
+    alert("Trượt")
+  }else {
+    alert(n)
+  }
+    Score(n)
+    function Score(num) {
+      for (let i = 50; i <=100 ; i++) {
+        if(i%5===0 && i-num<3 && i-num>0){
+          num=i
+          console.log(num)
+          break;
+        }else if(i-num>3 || i-num>0){
+          console.log(num)
+          break;
+        }}}
+</script>
+</body>
+</html>
